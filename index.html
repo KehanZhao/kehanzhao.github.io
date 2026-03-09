@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kehan Zhao | Plant Biology PhD Candidate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --brat:        #8bcf02;
+      --brat-dark:   #4d7501;
+      --brat-mid:    #6aaa01;
+      --brat-light:  #aada3a;
+      --brat-pale:   #eef7cc;
+      --sand:        #f7f6f2;
+      --text-dark:   #1a1a1a;
+      --text-mid:    #444;
+      --text-light:  #777;
+      --border:      #ddd;
+      --white:       #fff;
+      --radius:      8px;
+      --shadow:      0 2px 16px rgba(0,0,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 60px;
+    }
+    .nav-brand {
+      font-weight: 700; font-size: 1rem; color: var(--brat-dark);
+      text-decoration: none; letter-spacing: -0.01em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.88rem; font-weight: 500; color: var(--text-mid);
+      text-decoration: none; letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--brat-dark); }
+    .nav-cta {
+      background: var(--brat-dark); color: var(--white) !important;
+      padding: 0.4rem 1rem; border-radius: 20px;
+    }
+    .nav-cta:hover { background: var(--brat-mid) !important; color: var(--white) !important; }
+
+    /* ---- HERO ---- */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      background: linear-gradient(135deg, #2d4500 0%, #4d7501 55%, #8bcf02 100%);
+      padding: 6rem 2rem 4rem;
+    }
+    .hero-inner {
+      max-width: 1100px; margin: 0 auto; width: 100%;
+      display: flex; align-items: center; gap: 5rem;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 220px; height: 220px; border-radius: 50%;
+      border: 5px solid rgba(255,255,255,0.3);
+      object-fit: cover;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    }
+    .hero-text h1 {
+      font-family: 'Lora', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 600; color: var(--white);
+      line-height: 1.15; letter-spacing: -0.02em;
+    }
+    .hero-text .subtitle {
+      margin-top: 0.75rem;
+      font-size: 1.05rem; font-weight: 400;
+      color: rgba(255,255,255,0.85); line-height: 1.5;
+    }
+    .hero-text .institution {
+      margin-top: 0.4rem;
+      font-size: 0.95rem; color: rgba(255,255,255,0.7);
+    }
+    .hero-links {
+      margin-top: 1.8rem;
+      display: flex; flex-wrap: wrap; gap: 0.75rem;
+    }
+    .hero-links a {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.5rem 1.1rem; border-radius: 24px;
+      font-size: 0.88rem; font-weight: 500; text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-white {
+      background: var(--white); color: var(--brat-dark);
+    }
+    .btn-white:hover { background: var(--brat-pale); transform: translateY(-1px); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6); color: var(--white);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); transform: translateY(-1px); }
+
+    /* ---- SECTION SHARED ---- */
+    section { padding: 5rem 2rem; }
+    section:nth-child(even) { background: var(--sand); }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 1.9rem; font-weight: 600;
+      color: var(--brat-dark); margin-bottom: 2.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--brat);
+      display: inline-block;
+    }
+
+    /* ---- ABOUT ---- */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .about-text p { color: var(--text-mid); margin-bottom: 1rem; line-height: 1.8; }
+    .about-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-content: start;
+    }
+    .stat-card {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border); padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+    .stat-card .stat-num {
+      font-size: 2rem; font-weight: 700; color: var(--brat-dark);
+      line-height: 1;
+    }
+    .stat-card .stat-label {
+      font-size: 0.8rem; color: var(--text-light); margin-top: 0.25rem;
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    /* ---- RESEARCH ---- */
+    .research-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+    }
+    .research-card {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border); padding: 1.75rem;
+      box-shadow: var(--shadow); position: relative; overflow: hidden;
+    }
+    .research-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--brat-dark), var(--brat));
+    }
+    .research-card h3 {
+      font-size: 1.05rem; font-weight: 600; color: var(--brat-dark); margin-bottom: 0.75rem;
+    }
+    .research-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.7; }
+    .research-tag {
+      display: inline-block; margin-top: 1rem;
+      background: var(--brat-pale); color: var(--brat-dark);
+      font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.65rem;
+      border-radius: 12px;
+    }
+
+    /* ---- PUBLICATIONS ---- */
+    .pub-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .pub-item {
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border); padding: 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .pub-badge {
+      flex-shrink: 0; min-width: 80px; text-align: center;
+      padding: 0.35rem 0.6rem; border-radius: 6px;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-published { background: var(--brat-pale); color: var(--brat-dark); }
+    .badge-preprint { background: #fff3e8; color: #a05a1a; }
+    .pub-content .pub-title {
+      font-weight: 600; font-size: 0.97rem; color: var(--text-dark);
+      line-height: 1.4; margin-bottom: 0.35rem;
+    }
+    .pub-content .pub-title a { color: inherit; text-decoration: none; }
+    .pub-content .pub-title a:hover { color: var(--brat-dark); text-decoration: underline; }
+    .pub-content .pub-authors {
+      font-size: 0.87rem; color: var(--text-mid); margin-bottom: 0.25rem;
+    }
+    .pub-content .pub-authors strong { color: var(--brat-dark); }
+    .pub-content .pub-journal {
+      font-size: 0.84rem; color: var(--text-light); font-style: italic;
+    }
+    .pub-content .pub-journal a {
+      color: var(--brat-mid); text-decoration: none; font-style: normal;
+      font-size: 0.8rem; margin-left: 0.5rem;
+    }
+    .pub-content .pub-journal a:hover { text-decoration: underline; }
+
+    /* ---- PRESENTATIONS ---- */
+    .pres-list { display: flex; flex-direction: column; gap: 1rem; }
+    .pres-item {
+      display: flex; gap: 1.25rem; padding: 1.2rem 1.5rem;
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      align-items: flex-start;
+    }
+    .pres-year {
+      flex-shrink: 0; font-size: 0.85rem; font-weight: 700;
+      color: var(--brat-mid); min-width: 40px;
+    }
+    .pres-body .pres-title { font-weight: 500; font-size: 0.95rem; color: var(--text-dark); }
+    .pres-body .pres-venue { font-size: 0.85rem; color: var(--text-light); margin-top: 0.15rem; }
+    .pres-type {
+      flex-shrink: 0; margin-left: auto;
+      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+      padding: 0.2rem 0.55rem; border-radius: 10px; letter-spacing: 0.04em;
+    }
+    .type-oral { background: #e8f0ff; color: #2a4a9e; }
+    .type-poster { background: #fde8f8; color: #7a1a7a; }
+    .type-video { background: #fff0e0; color: #a05000; }
+
+    /* ---- EDUCATION ---- */
+    .edu-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .edu-item {
+      padding: 1.5rem;
+      background: var(--white); border-radius: var(--radius);
+      border: 1px solid var(--border); box-shadow: var(--shadow);
+      border-left: 4px solid var(--brat);
+    }
+    .edu-degree { font-weight: 600; font-size: 1rem; color: var(--brat-dark); }
+    .edu-institution { font-size: 0.92rem; color: var(--text-mid); margin-top: 0.2rem; }
+    .edu-dates { font-size: 0.83rem; color: var(--text-light); margin-top: 0.15rem; }
+    .edu-advisor { font-size: 0.85rem; color: var(--text-mid); margin-top: 0.4rem; font-style: italic; }
+
+    /* ---- PHOTOGRAPHY ---- */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.25rem;
+    }
+    .photo-item {
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+    .photo-item:hover { transform: translateY(-3px) scale(1.01); }
+    .photo-item img { width: 100%; display: block; border-radius: 2px; }
+
+    /* ---- LIGHTBOX ---- */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.92);
+      align-items: center; justify-content: center;
+      padding: 1.5rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-content {
+      position: relative; max-width: 90vw; max-height: 92vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox-content img {
+      max-width: 100%; max-height: 88vh;
+      object-fit: contain; border-radius: 2px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.6);
+    }
+    .lightbox-close {
+      position: fixed; top: 1.25rem; right: 1.5rem;
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,0.8); font-size: 2rem; line-height: 1;
+      transition: color 0.2s; z-index: 201;
+    }
+    .lightbox-close:hover { color: var(--white); }
+    .lightbox-prev, .lightbox-next {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white); width: 48px; height: 48px; border-radius: 50%;
+      cursor: pointer; font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; z-index: 201;
+    }
+    .lightbox-prev { left: 1.25rem; }
+    .lightbox-next { right: 1.25rem; }
+    .lightbox-prev:hover, .lightbox-next:hover { background: rgba(139,207,2,0.35); }
+    .lightbox-counter {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.55); font-size: 0.82rem; letter-spacing: 0.04em;
+    }
+
+    /* ---- CONTACT ---- */
+    #contact { background: #2d4500; }
+    #contact .section-title { color: var(--white); border-color: var(--brat); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .contact-blurb { color: rgba(255,255,255,0.8); line-height: 1.8; }
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-row {
+      display: flex; align-items: center; gap: 1rem;
+      color: rgba(255,255,255,0.9); font-size: 0.95rem;
+    }
+    .contact-row svg { flex-shrink: 0; opacity: 0.7; }
+    .contact-row a { color: var(--brat-light); text-decoration: none; }
+    .contact-row a:hover { text-decoration: underline; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #1a1a1a; color: rgba(255,255,255,0.5);
+      text-align: center; padding: 1.5rem 2rem;
+      font-size: 0.82rem;
+    }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 768px) {
+      .hero-inner { flex-direction: column; gap: 2rem; text-align: center; }
+      .hero-links { justify-content: center; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .pub-item { flex-direction: column; }
+      .pres-item { flex-wrap: wrap; }
+      .pres-type { margin-left: 0; }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="#hero">Kehan Zhao</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#presentations">Presentations</a></li>
+        <li><a href="#photography">Photography</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="Kehan Zhao CV 2026.pdf" target="_blank" class="nav-cta">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <img src="Profile.png" alt="Kehan Zhao" class="hero-photo" />
+      <div class="hero-text">
+        <h1>Kehan Zhao</h1>
+        <p style="margin-top:0.4rem;font-size:1.1rem;color:rgba(255,255,255,0.75);letter-spacing:0.04em;">赵柯涵 &nbsp;<span style="font-size:0.9rem;font-weight:300;opacity:0.8;">Zhào Kēhán</span></p>
+        <p class="subtitle">Ph.D. Candidate in Plant Biology</p>
+        <p class="institution">Department of Plant Sciences &middot; University of California, Davis<br>Advisor: Dr. J. Grey Monroe</p>
+        <div class="hero-links">
+          <a href="mailto:kehzhao@ucdavis.edu" class="btn-white">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            kehzhao@ucdavis.edu
+          </a>
+          <!-- TODO: Replace https://scholar.google.com/citations?user=WWNequwAAAAJ&hl=en&oi=ao with your actual Google Scholar profile URL -->
+          <a href="https://scholar.google.com/citations?user=WWNequwAAAAJ&hl=en&oi=ao" target="_blank" class="btn-outline">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+            Google Scholar
+          </a>
+          <a href="https://orcid.org/0009-0004-1431-637X" target="_blank" class="btn-outline">
+            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947-.947-.431-.947-.947.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.434h2.297c2.359 0 3.9-1.516 3.9-3.722 0-2.016-1.328-3.712-3.853-3.712h-2.344z"/></svg>
+            ORCID
+          </a>
+          <a href="Kehan Zhao CV 2026.pdf" target="_blank" class="btn-outline">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            Download CV
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <h2 class="section-title">About</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I am a Ph.D. candidate in Plant Biology at the University of California, Davis, working in the <strong>Monroe Lab</strong> within the Department of Plant Sciences. My research sits at the intersection of evolutionary genomics, plant biology, and computational biology.</p>
+          <p>My work focuses on understanding the evolutionary and functional consequences of <strong>loss-of-function (LoF) genetic variation</strong> in plants. I develop computational pipelines to identify LoF alleles and use genome-wide association approaches to link them to trait variation and adaptation.</p>
+          <p>I apply these methods across diverse plant systems &mdash; from the model organism <em>Arabidopsis thaliana</em> to economically important crops like cassava and diploid wheat &mdash; to uncover the genetic basis of adaptation, domestication, and trait diversity.</p>
+          <p>Before my Ph.D., I completed dual bachelor's degrees in Plant Science &amp; Technology and English (Translation) at Shanghai Jiao Tong University, and conducted master's-level research in the Maloof Lab at UC Davis.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Publications</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Presentations</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Awards &amp; Fellowships</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2021&ndash;</div>
+            <div class="stat-label">PhD at UC Davis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-inner">
+      <h2 class="section-title">Education</h2>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-degree">Ph.D. Candidate in Plant Biology</div>
+          <div class="edu-institution">University of California, Davis</div>
+          <div class="edu-dates">2021 &ndash; Present</div>
+          <div class="edu-advisor">Advisor: Dr. J. Grey Monroe</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.S. in Plant Science and Technology</div>
+          <div class="edu-institution">School of Agriculture and Biology, Shanghai Jiao Tong University</div>
+          <div class="edu-dates">2015 &ndash; 2019</div>
+          <div class="edu-advisor">Advisor: Dr. Jingjin Zhang &mdash; <em>Thesis: Effects of Red Light and Far-Red Light on the Growth, Development, and Hormone Levels of Water Spinach Sprouts</em></div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">B.A. in English (Translation)</div>
+          <div class="edu-institution">School of Foreign Language, Shanghai Jiao Tong University</div>
+          <div class="edu-dates">2017 &ndash; 2019</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-inner">
+      <h2 class="section-title">Research</h2>
+      <div class="research-grid">
+        <div class="research-card">
+          <h3>Loss-of-Function Burden Tests in <em>Arabidopsis</em></h3>
+          <p>Developing novel computational pipelines to call LoF alleles and discover causal relationships with trait variation. Computationally recapitulating flowering time networks in <em>Arabidopsis</em> and validating findings through RNAseq experiments.</p>
+          <span class="research-tag">Computational Genomics</span>
+          <span class="research-tag">GWAS</span>
+        </div>
+        <div class="research-card">
+          <h3>Genetic Diversity in Colombian Cassava Landraces</h3>
+          <p>Analyzing over 1,000 cassava genomes, including 387 newly sequenced Colombian landraces, to investigate population structure, climate-associated genetic differentiation, and the functional consequences of LoF mutations.</p>
+          <span class="research-tag">Population Genomics</span>
+          <span class="research-tag">Climate Adaptation</span>
+        </div>
+        <div class="research-card">
+          <h3>Gene Loss-of-Function in Diploid Wheat</h3>
+          <p>Investigating patterns of LoF variation in <em>Triticum monococcum</em> and their potential roles in adaptation and domestication, bridging evolutionary biology and crop improvement.</p>
+          <span class="research-tag">Evolutionary Genomics</span>
+          <span class="research-tag">Crop Improvement</span>
+        </div>
+        <div class="research-card">
+          <h3>CRISPR Functional Analysis in <em>Ceratopteris richardii</em></h3>
+          <p>Developed a CRISPR/Cas9 system for <em>C. richardii</em> to generate knockout lines targeting <em>CrLFY</em>, enabling functional characterization of the LEAFY transcription factor in ferns. (Master's research, Maloof Lab)</p>
+          <span class="research-tag">CRISPR/Cas9</span>
+          <span class="research-tag">Functional Genomics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-inner">
+      <h2 class="section-title">Publications</h2>
+      <div class="pub-list">
+
+        <div class="pub-item">
+          <span class="pub-badge badge-published">Published</span>
+          <div class="pub-content">
+            <div class="pub-title">
+              <a href="https://doi.org/10.1111/nph.70918" target="_blank">Unlocking genetic diversity in Colombian cassava landraces for accelerated breeding</a>
+            </div>
+            <div class="pub-authors"><strong>Zhao K</strong>, Long E, Sanchez F, Monier E, Chavarriaga P, and Monroe JG.</div>
+            <div class="pub-journal"><em>New Phytologist.</em> 2026. <a href="https://doi.org/10.1111/nph.70918" target="_blank">doi &rarr;</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-badge badge-preprint">Preprint</span>
+          <div class="pub-content">
+            <div class="pub-title">
+              <a href="https://doi.org/10.1101/2025.04.30.651390" target="_blank">Functional insights into dispensable genes using genome-wide loss-of-function burden tests in Arabidopsis</a>
+            </div>
+            <div class="pub-authors"><strong>Zhao K</strong>, Lensink M, and Monroe JG.</div>
+            <div class="pub-journal">bioRxiv. 2025.04.30.651390 (In Revision/Review) <a href="https://doi.org/10.1101/2025.04.30.651390" target="_blank">doi &rarr;</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-badge badge-published">Published</span>
+          <div class="pub-content">
+            <div class="pub-title">
+              <a href="https://doi.org/10.7554/elife.105016.1" target="_blank">Convergent evolution of epigenome recruited DNA repair across the Tree of Life</a>
+            </div>
+            <div class="pub-authors">Monroe JG, Lee C, Quiroz D, Lensink M, Oya S, Davis M, Long E, Bird KA, Pierce A, <strong>Zhao K</strong>, et al.</div>
+            <div class="pub-journal">eLife, 2025. <a href="https://doi.org/10.7554/elife.105016.1" target="_blank">doi &rarr;</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-badge badge-published">Published</span>
+          <div class="pub-content">
+            <div class="pub-title">
+              <a href="https://doi.org/10.1093/plcell/koae089" target="_blank">H3K4me1 recruits DNA repair proteins in plants</a>
+            </div>
+            <div class="pub-authors">Quiroz D, Oya S, Lopez-Mateos D, <strong>Zhao K</strong>, Pierce A, Ortega L, Ali A, Carbonell-Bejerano P, Yarov-Yarovoy V, Suzuki S, et al.</div>
+            <div class="pub-journal"><em>Plant Cell.</em> 36(6):2410&ndash;2426, 2024. <a href="https://doi.org/10.1093/plcell/koae089" target="_blank">doi &rarr;</a></div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-badge badge-published">Published</span>
+          <div class="pub-content">
+            <div class="pub-title">Growth response of water spinach sprouts to LED light intensity and light quality</div>
+            <div class="pub-authors">Zhao S, <strong>Zhao K</strong>, Chen Z, Zhang J, Huang D.</div>
+            <div class="pub-journal"><em>China Vegetables.</em> 1(6):51&ndash;57, 2019.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESENTATIONS -->
+  <section id="presentations">
+    <div class="section-inner">
+      <h2 class="section-title">Presentations</h2>
+      <div class="pres-list">
+
+        <div class="pres-item">
+          <div class="pres-year">2026</div>
+          <div class="pres-body">
+            <div class="pres-title">Functional insights into dispensable genes using loss-of-function GWAS in Arabidopsis</div>
+            <div class="pres-venue">PAG 33 (Plant and Animal Genome Conference 33), San Diego, CA</div>
+          </div>
+          <span class="pres-type type-oral">Oral</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-year">2026</div>
+          <div class="pres-body">
+            <div class="pres-title">Functional GWAS for breeding: harnessing loss-of-function variation to fast-track gene discovery</div>
+            <div class="pres-venue">UCD Plant Breeding Annual Retreat, Bodega Bay, CA</div>
+          </div>
+          <span class="pres-type type-oral">Oral</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-year">2025</div>
+          <div class="pres-body">
+            <div class="pres-title">Functional insights into dispensable genes using loss-of-function GWAS in Arabidopsis</div>
+            <div class="pres-venue">PAG 32 (Plant and Animal Genome Conference 32), San Diego, CA</div>
+          </div>
+          <span class="pres-type type-poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-year">2024</div>
+          <div class="pres-body">
+            <div class="pres-title">Climate adaptation in cassava landraces</div>
+            <div class="pres-venue">PAG 31 (Plant and Animal Genome Conference 31), San Diego, CA</div>
+          </div>
+          <span class="pres-type type-oral">Oral</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-year">2024</div>
+          <div class="pres-body">
+            <div class="pres-title">Utilizing loss-of-function (LoF) variations for gene discovery and crop improvement</div>
+            <div class="pres-venue">2024 UCD PBGG Colloquium, Davis, CA</div>
+          </div>
+          <span class="pres-type type-oral">Oral</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-year">2022</div>
+          <div class="pres-body">
+            <div class="pres-title">A novel gene discovery approach: LoF-expression genome-wide association study</div>
+            <div class="pres-venue">UCD Plant Sciences Symposium, Davis, CA</div>
+          </div>
+          <span class="pres-type type-poster">Poster</span>
+        </div>
+
+        <div class="pres-item">
+          <div class="pres-year">2021</div>
+          <div class="pres-body">
+            <div class="pres-title">The evolutionary significance of loss-of-function alleles in Arabidopsis thaliana transcription factors</div>
+            <div class="pres-venue">Evolution Conference</div>
+          </div>
+          <span class="pres-type type-video">Video Flash Talk</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOGRAPHY -->
+  <section id="photography">
+    <div class="section-inner">
+      <h2 class="section-title">Photography</h2>
+      <p style="color:var(--text-mid);margin-bottom:2rem;line-height:1.8;">Besides being a researcher in Plant Genomics, I am also an amateur photographer mostly interested in instant and film photography. Here is some of my selected work.</p>
+      <div class="photo-grid">
+        <div class="photo-item" onclick="openLightbox(0)"><img src="Selected%20Photography/2025/IMG_0045.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(1)"><img src="Selected%20Photography/2025/IMG_4795.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(2)"><img src="Selected%20Photography/2025/IMG_5228.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(3)"><img src="Selected%20Photography/2025/IMG_5942.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(4)"><img src="Selected%20Photography/2025/IMG_6119.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(5)"><img src="Selected%20Photography/2025/IMG_8462.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(6)"><img src="Selected%20Photography/2025/IMG_8463.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(7)"><img src="Selected%20Photography/2025/IMG_9035.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(8)"><img src="Selected%20Photography/2025/IMG_9074.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+        <div class="photo-item" onclick="openLightbox(9)"><img src="Selected%20Photography/2025/IMG_9328.jpeg" alt="Photography by Kehan Zhao" loading="lazy" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightboxOnBackdrop(event)">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" onclick="prevPhoto()" aria-label="Previous">&#8592;</button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Photography by Kehan Zhao" />
+    </div>
+    <button class="lightbox-next" onclick="nextPhoto()" aria-label="Next">&#8594;</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-blurb">
+          <p>I am always happy to discuss research collaborations, questions about my work, or opportunities in plant genomics and evolutionary biology. Feel free to reach out by email.</p>
+        </div>
+        <div class="contact-info">
+          <div class="contact-row">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            <a href="mailto:kehzhao@ucdavis.edu">kehzhao@ucdavis.edu</a>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>150 California Ave, Davis, CA 95616<br>Department of Plant Sciences, UC Davis</span>
+          </div>
+          <!-- TODO: Replace https://scholar.google.com/citations?user=WWNequwAAAAJ&hl=en&oi=ao with your actual Google Scholar profile URL -->
+          <div class="contact-row">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14zm0-24L0 9.5l4.838 3.94A8 8 0 0 1 12 9a8 8 0 0 1 7.162 4.44L24 9.5z"/></svg>
+            <a href="https://scholar.google.com/citations?user=WWNequwAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar</a>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947-.947-.431-.947-.947.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.434h2.297c2.359 0 3.9-1.516 3.9-3.722 0-2.016-1.328-3.712-3.853-3.712h-2.344z"/></svg>
+            <a href="https://orcid.org/0009-0004-1431-637X" target="_blank">ORCID: 0009-0004-1431-637X</a>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <a href="Kehan Zhao CV 2026.pdf" target="_blank">Download full CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Kehan Zhao &middot; Department of Plant Sciences, University of California, Davis</p>
+  </footer>
+
+  <script>
+    const photos = [
+      "Selected%20Photography/2025/IMG_0045.jpeg",
+      "Selected%20Photography/2025/IMG_4795.jpeg",
+      "Selected%20Photography/2025/IMG_5228.jpeg",
+      "Selected%20Photography/2025/IMG_5942.jpeg",
+      "Selected%20Photography/2025/IMG_6119.jpeg",
+      "Selected%20Photography/2025/IMG_8462.jpeg",
+      "Selected%20Photography/2025/IMG_8463.jpeg",
+      "Selected%20Photography/2025/IMG_9035.jpeg",
+      "Selected%20Photography/2025/IMG_9074.jpeg",
+      "Selected%20Photography/2025/IMG_9328.jpeg"
+    ];
+    let current = 0;
+
+    function openLightbox(index) {
+      current = index;
+      document.getElementById('lightboxImg').src = photos[current];
+      document.getElementById('lightboxCounter').textContent = (current + 1) + ' / ' + photos.length;
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function closeLightboxOnBackdrop(e) {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    }
+    function prevPhoto() {
+      current = (current - 1 + photos.length) % photos.length;
+      document.getElementById('lightboxImg').src = photos[current];
+      document.getElementById('lightboxCounter').textContent = (current + 1) + ' / ' + photos.length;
+    }
+    function nextPhoto() {
+      current = (current + 1) % photos.length;
+      document.getElementById('lightboxImg').src = photos[current];
+      document.getElementById('lightboxCounter').textContent = (current + 1) + ' / ' + photos.length;
+    }
+    document.addEventListener('keydown', function(e) {
+      if (!document.getElementById('lightbox').classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevPhoto();
+      if (e.key === 'ArrowRight') nextPhoto();
+    });
+  </script>
+
+</body>
+</html>
