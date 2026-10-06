@@ -7,13 +7,13 @@
   <meta name="description" content="Kehan Zhao — plant genomics researcher at UC Davis and amateur instant &amp; film photographer." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
   <script>
     // Keep old single-page links (e.g. /#publications) working after the site split.
     (function () {
       var map = {
-        '#about': '/about/', '#contact': '/about/',
+        '#about': '/about/', '#contact': '/science/#contact',
         '#education': '/science/#education', '#research': '/science/#research',
         '#publications': '/science/#publications', '#presentations': '/science/#presentations',
         '#photography': '/photography/'
@@ -23,15 +23,52 @@
   </script>
 </head>
 <body>
+  <div class="wrap home">
 
-  <main class="home">
-    <h1>Kehan Zhao</h1>
-    <nav class="menu" aria-label="Main">
-      <a href="/about/">About</a>
-      <a href="/science/">Science</a>
-      <a href="/photography/">Photography</a>
-    </nav>
-  </main>
+    <main class="stage">
+      <!-- A slow slideshow of instant-film prints. Delete this block for a text-only home page. -->
+      <a class="slides" id="slides" href="/photography/" aria-label="Photography">
+        <img class="on" src="/photography/img/large/IMG_0045.jpg" alt="Instant film photograph by Kehan Zhao" />
+        <img alt="" />
+      </a>
+    </main>
 
+    <footer class="lockup">
+      <a class="name" href="/"><span class="zh" lang="zh">赵柯涵</span><span class="py">[zhào kēhán]</span><span class="en">Kehan Zhao</span></a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/about/">about</a></li>
+          <li><a href="/science/">science</a></li>
+          <li><a href="/photography/">photography</a></li>
+        </ul>
+      </nav>
+      <p class="copy">&copy;<span lang="zh">赵柯涵</span> Kehan Zhao, 2026</p>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var names = ['IMG_0045', 'IMG_4795', 'IMG_5228', 'IMG_5942', 'IMG_6119',
+                   'IMG_8462', 'IMG_8463', 'IMG_9035', 'IMG_9074', 'IMG_9328'];
+      var imgs = document.querySelectorAll('#slides img');
+      var front = 0, n = 0;
+      function next() {
+        n = (n + 1) % names.length;
+        var src = '/photography/img/large/' + names[n] + '.jpg';
+        var pre = new Image();
+        pre.onload = function () {
+          var back = imgs[1 - front];
+          back.src = src;
+          back.classList.add('on');
+          imgs[front].classList.remove('on');
+          front = 1 - front;
+        };
+        pre.src = src;
+      }
+      setInterval(function () { if (!document.hidden) next(); }, 5000);
+    })();
+  </script>
 </body>
 </html>

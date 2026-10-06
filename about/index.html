@@ -7,50 +7,55 @@
   <meta name="description" content="Kehan Zhao is a postdoctoral researcher in the Department of Plant Sciences at UC Davis, studying plant genome evolution." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
+  <div class="wrap">
 
-  <header class="site-header">
-    <a class="brand" href="/">Kehan Zhao</a>
-    <nav class="menu" aria-label="Main">
-      <a href="/about/" aria-current="page">About</a>
-      <a href="/science/">Science</a>
-      <a href="/photography/">Photography</a>
-    </nav>
-  </header>
+    <header class="topbar">
+      <a href="/">&larr; home</a>
+      <span>about</span>
+    </header>
 
-  <main class="page">
-    <div class="about">
-      <img class="about-photo" src="/Profile.jpg" alt="Portrait of Kehan Zhao" />
+    <main class="page about">
+      <h1 class="page-title">about</h1>
 
-      <div>
-        <h1>Kehan Zhao</h1>
-        <p class="name-zh">赵柯涵 &nbsp;Zhào Kēhán</p>
-        <p class="role">
-          Postdoctoral Researcher
-          <span>Department of Plant Sciences &middot; University of California, Davis</span>
-        </p>
+      <div class="about-grid">
+        <img class="portrait" src="/Profile.jpg" alt="Portrait of Kehan Zhao" />
 
-        <div class="bio">
-          <p>I am a postdoctoral researcher in the Department of Plant Sciences at the University of California, Davis, working in the Monroe Lab. I recently completed my Ph.D. in Plant Biology at UC Davis (2021&ndash;2026) under the guidance of Dr. J. Grey Monroe.</p>
-          <p>My research sits at the intersection of evolutionary genomics, plant biology, and computational biology. During my Ph.D., I studied the evolutionary and functional consequences of loss-of-function genetic variation in plants &mdash; from <em>Arabidopsis thaliana</em> to cassava and diploid wheat &mdash; and developed computational pipelines that link natural loss-of-function alleles to trait variation and adaptation. As a postdoc, I am now studying somatic mutations in cassava clones, using high-quality HiFi genome assemblies of clonal accessions from various countries to date the historical spread of these clones.</p>
-          <p>Before UC Davis, I completed dual bachelor's degrees in Plant Science &amp; Technology and English (Translation) at Shanghai Jiao Tong University, and then conducted master's-level research in the Maloof Lab at UC Davis.</p>
-          <p>Outside the lab, I am an amateur photographer, mostly interested in instant and film photography. You can find a selection of my work in the <a href="/photography/">photography</a> section, and my research in the <a href="/science/">science</a> section.</p>
-        </div>
+        <div>
+          <p class="role">Postdoctoral Researcher<br>Department of Plant Sciences, University of California, Davis</p>
 
-        <div class="about-links">
-          <a href="mailto:kehzhao@ucdavis.edu">Email</a>
-          <a href="https://scholar.google.com/citations?user=WWNequwAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar</a>
-          <a href="https://orcid.org/0009-0004-1431-637X" target="_blank" rel="noopener">ORCID</a>
-          <a href="/Kehan%20Zhao%20CV%202026.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+          <div class="prose">
+            <p>I am a postdoctoral researcher in the Department of Plant Sciences at the University of California, Davis, working in the Monroe Lab. I recently completed my Ph.D. in Plant Biology at UC Davis (2021&ndash;2026) under the guidance of Dr. J. Grey Monroe.</p>
+            <p>My research sits at the intersection of evolutionary genomics, plant biology, and computational biology. During my Ph.D., I studied the evolutionary and functional consequences of loss-of-function genetic variation in plants &mdash; from <em>Arabidopsis thaliana</em> to cassava and diploid wheat &mdash; and developed computational pipelines that link natural loss-of-function alleles to trait variation and adaptation. As a postdoc, I am now studying somatic mutations in cassava clones, using high-quality HiFi genome assemblies of clonal accessions from various countries to date the historical spread of these clones.</p>
+            <p>Before UC Davis, I completed dual bachelor's degrees in Plant Science &amp; Technology and English (Translation) at Shanghai Jiao Tong University, and then conducted master's-level research in the Maloof Lab at UC Davis.</p>
+            <p>Outside the lab, I am an amateur photographer, mostly interested in instant and film photography. You can find a selection of my work in the <a href="/photography/">photography</a> section, and my research in the <a href="/science/">science</a> section.</p>
+          </div>
+
+          <ul class="links">
+            <li><a href="mailto:kehzhao@ucdavis.edu">email</a></li>
+            <li><a href="https://scholar.google.com/citations?user=WWNequwAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">google scholar</a></li>
+            <li><a href="https://orcid.org/0009-0004-1431-637X" target="_blank" rel="noopener">orcid</a></li>
+            <li><a href="/Kehan%20Zhao%20CV%202026.pdf" target="_blank" rel="noopener">cv (pdf)</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="site-footer">&copy; 2026 Kehan Zhao</footer>
+    <footer class="lockup">
+      <a class="name" href="/"><span class="zh" lang="zh">赵柯涵</span><span class="py">[zhào kēhán]</span><span class="en">Kehan Zhao</span></a>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="/about/" aria-current="page">about</a></li>
+          <li><a href="/science/">science</a></li>
+          <li><a href="/photography/">photography</a></li>
+        </ul>
+      </nav>
+      <p class="copy">&copy;<span lang="zh">赵柯涵</span> Kehan Zhao, 2026</p>
+    </footer>
 
+  </div>
 </body>
 </html>
