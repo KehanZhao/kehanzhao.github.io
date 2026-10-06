@@ -78,14 +78,12 @@ a:hover { text-decoration-color: var(--ink); }
   display: block; font-family: var(--cjk);
   font-size: 1.5rem; line-height: 1.3; letter-spacing: 0.35em; text-indent: 0.35em;
 }
-.lockup .py { display: block; font-size: 0.78rem; letter-spacing: 0.1em; color: var(--mid); }
 .lockup .en { display: block; margin-top: 0.1rem; font-size: 1.05rem; letter-spacing: 0.14em; }
 .lockup ul { list-style: none; margin: 1rem 0 0.6rem; font-size: 1rem; letter-spacing: 0.2em; line-height: 1.7; }
 .lockup li a::before { content: '•'; margin-right: 0.55em; display: inline-block; }
 .lockup li a:hover, .lockup li a[aria-current="page"] {
   text-decoration: underline; text-underline-offset: 0.3em; text-decoration-color: var(--ink);
 }
-.lockup .copy { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--mid); }
 
 /* ---- HOME ---- */
 .wrap.home { position: relative; }
