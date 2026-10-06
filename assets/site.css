@@ -1,0 +1,171 @@
+/* Shared minimal theme: home, about and photography pages.
+   (The science page keeps its own, greener stylesheet inline.) */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:   #111;
+  --mid:   #555;
+  --light: #8c8c8c;
+  --line:  #e6e6e3;
+  --wash:  #f4f4f2;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --title-font: 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-size: 16px; line-height: 1.65;
+  color: var(--ink); background: #fff;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+
+/* ---- MENU LINKS (shared by home + header) ---- */
+.menu a {
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  text-decoration: none; color: var(--mid);
+  padding: 0.3rem 0; border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.menu a:hover { color: var(--ink); border-bottom-color: var(--line); }
+.menu a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* ---- HOME ---- */
+.home {
+  flex: 1;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem 10vh;
+}
+.home h1 {
+  font-family: var(--title-font);
+  font-weight: 400; font-size: clamp(2.8rem, 8vw, 5rem);
+  letter-spacing: -0.01em; line-height: 1.1;
+}
+.home .menu {
+  margin-top: 2.5rem;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.75rem clamp(1.75rem, 5vw, 3.25rem);
+}
+
+/* ---- HEADER (inner pages) ---- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.5rem var(--gutter);
+}
+.brand {
+  font-family: var(--title-font);
+  font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em;
+  text-decoration: none; color: var(--ink);
+}
+.site-header .menu { display: flex; gap: clamp(1.1rem, 3vw, 2.25rem); }
+
+/* ---- FOOTER ---- */
+.site-footer {
+  margin-top: auto;
+  padding: 2rem var(--gutter);
+  text-align: center;
+  font-size: 0.78rem; color: var(--light);
+}
+
+/* ---- ABOUT ---- */
+.page {
+  width: 100%; max-width: 900px; margin: 0 auto;
+  padding: clamp(2rem, 6vw, 4rem) var(--gutter) 5rem;
+}
+.about {
+  display: grid; grid-template-columns: 220px 1fr; gap: clamp(2rem, 6vw, 4rem);
+  align-items: start;
+}
+.about-photo {
+  width: 220px; height: 220px; border-radius: 50%; object-fit: cover; display: block;
+}
+.about h1 {
+  font-family: var(--title-font);
+  font-weight: 400; font-size: clamp(2.2rem, 5vw, 3rem);
+  letter-spacing: -0.01em; line-height: 1.1;
+}
+.about .name-zh { margin-top: 0.4rem; font-size: 1rem; color: var(--light); letter-spacing: 0.04em; }
+.about .role { margin-top: 1rem; font-size: 0.95rem; color: var(--ink); }
+.about .role span { display: block; color: var(--mid); }
+.about .bio { margin-top: 2rem; }
+.about .bio p { color: var(--mid); line-height: 1.85; margin-bottom: 1.1rem; }
+.about .bio a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.2s; }
+.about .bio a:hover { border-bottom-color: var(--ink); }
+.about-links {
+  margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
+  display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
+  font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.about-links a {
+  text-decoration: none; color: var(--mid);
+  border-bottom: 1px solid transparent; padding: 0.2rem 0; transition: color 0.2s, border-color 0.2s;
+}
+.about-links a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* ---- PHOTOGRAPHY ---- */
+.page-title { background: var(--wash); padding: clamp(2rem, 5vw, 3.5rem) var(--gutter); }
+.page-title h1 {
+  font-weight: 400; font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  letter-spacing: -0.025em; line-height: 1.1;
+}
+.page-title p { margin-top: 1rem; max-width: 38rem; color: var(--mid); line-height: 1.8; }
+
+.gallery {
+  width: 100%; max-width: 1800px; margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 3rem) var(--gutter) clamp(2.5rem, 6vw, 5rem);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: clamp(1rem, 2.4vw, 2.25rem);
+}
+.gallery a { display: block; line-height: 0; cursor: zoom-in; }
+.gallery img { width: 100%; height: auto; display: block; transition: opacity 0.25s; }
+.gallery a:hover img, .gallery a:focus-visible img { opacity: 0.8; }
+.gallery a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+
+/* ---- LIGHTBOX ---- */
+.lightbox {
+  display: none; position: fixed; inset: 0; z-index: 100;
+  align-items: center; justify-content: center;
+  background: #fff;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: min(92vw, 1100px); max-height: 88vh;
+  width: auto; height: auto; object-fit: contain;
+}
+.lightbox button {
+  position: absolute; background: none; border: 0; cursor: pointer;
+  color: var(--ink); opacity: 0.5; transition: opacity 0.2s;
+  width: 3.25rem; height: 3.25rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.lightbox button:hover, .lightbox button:focus-visible { opacity: 1; }
+.lightbox svg { width: 1.6rem; height: 1.6rem; stroke: currentColor; fill: none; stroke-width: 1.25; stroke-linecap: round; stroke-linejoin: round; }
+.lb-close { top: 0.75rem; right: 0.75rem; }
+.lb-prev  { left: 0.75rem;  top: 50%; transform: translateY(-50%); }
+.lb-next  { right: 0.75rem; top: 50%; transform: translateY(-50%); }
+.lb-count {
+  position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.75rem; letter-spacing: 0.12em; color: var(--light);
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1100px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 560px) {
+  .site-header { flex-direction: column; align-items: flex-start; gap: 0.9rem; padding-bottom: 1.1rem; }
+  .brand { white-space: nowrap; }
+}
+@media (max-width: 720px) {
+  .about { grid-template-columns: 1fr; text-align: left; }
+  .about-photo { width: 160px; height: 160px; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .lb-prev, .lb-next { top: auto; bottom: 0.75rem; transform: none; }
+  .lb-prev { left: 1rem; } .lb-next { right: 1rem; }
+}
